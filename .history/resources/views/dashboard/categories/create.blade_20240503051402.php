@@ -14,6 +14,7 @@
         @csrf
         
         @include('dashboard.categories._form')
+
     </form>
 
 @endsection
