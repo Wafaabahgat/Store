@@ -91,12 +91,12 @@ class CategoriesController extends Controller
         $categories = Category::findOrFail($id);
 
         $old_image = $categories->image;
-        
+
         $data = $request->except('image');
         $new_img = $this->uploadImage($request);
-        
-        if($new_img){
-            $data['image']=$new_img;
+
+        if ($new_img) {
+            $data['image'] = $new_img;
         }
 
 
@@ -123,7 +123,7 @@ class CategoriesController extends Controller
         return Redirect::route('dashboard.categories.index')
             ->with(['delete' => 'تم الحذف بنجاح']);
     }
-    
+
     protected function uploadImage(Request $request)
     {
         if (!$request->hasFile('image')) {

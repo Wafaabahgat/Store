@@ -4,16 +4,18 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Route;
 use Illuminate\View\Component;
 
-class form.label extends Component
+class Nav extends Component
 {
-    /**
-     * Create a new component instance.
-     */
+    public $items;
+    public $active;
+
     public function __construct()
     {
-        //
+        $this->items = config('nav');
+        $this->active = Route::currentRouteName();
     }
 
     /**
@@ -21,6 +23,6 @@ class form.label extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.form.label');
+        return view('components.nav');
     }
 }
