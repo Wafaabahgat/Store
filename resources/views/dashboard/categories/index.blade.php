@@ -13,8 +13,18 @@
         <a href="{{ route('dashboard.categories.create') }}" class="btn btn-success">Create</a>
     </div>
 
-    <x-alert type="success"/>
-    <x-alert type="delete"/>
+    <x-alert type="success" />
+    <x-alert type="delete" />
+
+    <form action="{{ URL::current() }}" method="get" class="mb-2 justify-content d-flex">
+        <x-form.input name="name" type="text" placeholder="Name" :value="request('name')" />
+        <select name="status" class="mx-2 form-conrtol">
+            <option value="">All</option>
+            <option value="active" @selected(request('status') == 'active')>Active</option>
+            <option value="archived" @selected(request('status') == 'archived')>Archived</option>
+        </select>
+        <button class="mx-2 btn btn-dark">Filter</button>
+    </form>
 
     <table class="table">
         <thead>
@@ -22,6 +32,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Parent</th>
+                <th scope="col">Status</th>
                 <th scope="col">Image</th>
                 <th scope="col">Created_at</th>
                 <th colspan="2"></th>
@@ -34,8 +45,10 @@
                     <th scope="row"> {{ $category->id }} </th>
                     <td> {{ $category->name }} </td>
                     <td> {{ $category->parent_id }} </td>
+                    <td> {{ $category->status }} </td>
                     <td>
-                        <img src="{{asset ('storage/'. $category->image) }}" alt="" height="60" width="80" /> 
+                        <img src="{{ asset('storage/' . $category->image) }}" alt="" height="60"
+                            width="80" />
                     </td>
                     <td> {{ $category->created_at }} </td>
                     <td>
@@ -56,10 +69,8 @@
                     </td>
                 </tr>
             @endforelse ($categories as $category)
-
-
-
         </tbody>
     </table>
+    {{ $categories->withQueryString()->links() }}
 
 @endsection

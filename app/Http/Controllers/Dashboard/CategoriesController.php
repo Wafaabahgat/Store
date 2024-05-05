@@ -16,24 +16,34 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        $categories = Category::all();
+        $request = request();
+        $query = Category::query();
+        
+        if ($name = $request->query('name')) {
+            $query->where('name', 'LIKE', '%{$name}%');
+        }
+        if ($status = $request->query('status')) {
+            $query->where('status', '=', $status);
+        }
+
+
+        // $categories = Category::all();
+        $categories = $query->paginate(1);
+        // $categories = Category::paginate(1);
+
         return view('dashboard.categories.index', compact('categories'));
     }
 
     public function create()
     {
         $parents = Category::all();
+
         $categories = new Category();
         return view('dashboard.categories.create', compact('parents', 'categories'));
     }
 
     public function store(CategoryRequest $request)
     {
-        // $request->validate(Category::rules(),[
-        //     'required'=>'This (:attribute) is required.',
-        //     'name.unique'=>'This name is already exists.',
-        // ]);
-
         $request->merge([
             'slug' => Str::slug($request->post('name'))
         ]);
