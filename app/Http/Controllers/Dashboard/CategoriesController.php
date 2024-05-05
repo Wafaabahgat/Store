@@ -3,15 +3,17 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class CategoriesController extends Controller
 {
-   
+
     public function index()
     {
         $categories = Category::all();
@@ -22,18 +24,25 @@ class CategoriesController extends Controller
     {
         $parents = Category::all();
         $categories = new Category();
-        return view('dashboard.categories.create', compact('parents','categories'));
+        return view('dashboard.categories.create', compact('parents', 'categories'));
     }
-   
-    public function store(Request $request)
+
+    public function store(CategoryRequest $request)
     {
-        // Request Merge
+        // $request->validate(Category::rules(),[
+        //     'required'=>'This (:attribute) is required.',
+        //     'name.unique'=>'This name is already exists.',
+        // ]);
+
         $request->merge([
-            'slug' => Str::slug($request->post('name')),
+            'slug' => Str::slug($request->post('name'))
         ]);
+        $data = $request->except('image');
+        $data['image'] = $this->uploadImage($request);
+
 
         // Mass Assignment
-        $category = Category::create($request->all());
+        $categories = Category::create($data);
         // PRG
         return Redirect::route('dashboard.categories.index')
             ->with(['success' => 'تم الاضافة بنجاح']);
@@ -41,16 +50,16 @@ class CategoriesController extends Controller
         // return redirect()->route('categories.index')
         //     ->with(['success' => 'تم الاضافة بنجاح']);
 
-        // $category = new Category($request->all());
+        // $categories = new Category($request->all());
 
-        // $category = new Category([
+        // $categories = new Category([
         //     'name' => $request['name'],
         //     'description' => $request['description'],
         //     'parent_id' => $request['parent_id'],
         //     'image' => $request['image'],
         //     'status' => $request['status'],
         // ]);
-        // $category->save();
+        // $categories->save();
     }
 
 
@@ -74,10 +83,28 @@ class CategoriesController extends Controller
             ->with(['success' => 'تم الاضافة بنجاح']);
     }
 
-    public function update(Request $request, string $id)
+    public function update(CategoryRequest $request, string $id)
     {
-        $category = Category::findOrFail($id);
-        $category->update($request->all());
+
+        // $request->validate(Category::rules($id));
+
+        $categories = Category::findOrFail($id);
+
+        $old_image = $categories->image;
+        
+        $data = $request->except('image');
+        $new_img = $this->uploadImage($request);
+        
+        if($new_img){
+            $data['image']=$new_img;
+        }
+
+
+        $categories->update($data);
+
+        if ($old_image && $new_img) {
+            Storage::disk('public')->delete($old_image);
+        }
         // PRG
         return Redirect::route('dashboard.categories.index')
             ->with(['success' => 'تم التعديل بنجاح']);
@@ -85,8 +112,27 @@ class CategoriesController extends Controller
 
     public function destroy(string $id)
     {
-        Category::destroy($id);
+        $categories = Category::findOrFail($id);
+        $categories->delete();
+        if ($categories->image) {
+            Storage::disk('public')->delete($categories->image);
+        }
+
+        //categories::destroy($id);
+
         return Redirect::route('dashboard.categories.index')
             ->with(['delete' => 'تم الحذف بنجاح']);
+    }
+    
+    protected function uploadImage(Request $request)
+    {
+        if (!$request->hasFile('image')) {
+            return;
+        }
+        $file = $request->file('image');
+        $path = $file->store('uploads', [
+            'disk' => 'public'
+        ]);
+        return $path;
     }
 }

@@ -13,17 +13,8 @@
         <a href="{{ route('dashboard.categories.create') }}" class="btn btn-success">Create</a>
     </div>
 
-    @if (session()->has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    @if (session()->has('delete'))
-        <div class="alert alert-danger" role="alert">
-            {{ session('delete') }}
-        </div>
-    @endif
+    <x-alert type="success"/>
+    <x-alert type="delete"/>
 
     <table class="table">
         <thead>
@@ -31,6 +22,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Parent</th>
+                <th scope="col">Image</th>
                 <th scope="col">Created_at</th>
                 <th colspan="2"></th>
             </tr>
@@ -42,6 +34,9 @@
                     <th scope="row"> {{ $category->id }} </th>
                     <td> {{ $category->name }} </td>
                     <td> {{ $category->parent_id }} </td>
+                    <td>
+                        <img src="{{asset ('storage/'. $category->image) }}" alt="" height="60" width="80" /> 
+                    </td>
                     <td> {{ $category->created_at }} </td>
                     <td>
                         <a href="{{ route('dashboard.categories.edit', $category->id) }}" class="btn btn-success">Edit</a>
