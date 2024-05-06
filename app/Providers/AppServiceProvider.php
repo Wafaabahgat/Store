@@ -28,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
             },
             "The :attribute is forbidden"
         );
+        
         Paginator::useBootstrap();
     }
 }

@@ -17,20 +17,7 @@ class CategoriesController extends Controller
     public function index()
     {
         $request = request();
-        $query = Category::query();
-
-        if ($name = $request->query('name')) {
-            $query->where('name', 'LIKE', "%{$name}%");
-        }
-        if ($status = $request->query('status')) {
-            $query->where('status', '=', $status);
-        }
-
-
-        // $categories = Category::all();
-        $categories = $query->paginate(1);
-        // $categories = Category::paginate(1);
-
+        $categories = Category::filter($request->query())->paginate(3);
         return view('dashboard.categories.index', compact('categories'));
     }
 
@@ -45,13 +32,13 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $request->validate(Category::rules());
-        //dd($request);
+        // dd($request);
         $request->merge([
             'slug' => Str::slug($request->post('name'))
         ]);
         $data = $request->except('image');
         $data['image'] = $this->uploadImage($request);
-       
+
 
         // Mass Assignment
         $categories = Category::create($data);
