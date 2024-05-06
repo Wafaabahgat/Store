@@ -17,7 +17,13 @@ class CategoriesController extends Controller
     public function index()
     {
         $request = request();
-        $categories = Category::filter($request->query())->paginate(3);
+        $categories = Category::leftJoin('categories as parents', 'parents.id', '=', 'categories.parent_id')
+            ->select([
+                'categories.*',
+                'parents.name as parent_name'
+            ])
+            ->filter($request->query())
+            ->paginate(3);
         return view('dashboard.categories.index', compact('categories'));
     }
 
@@ -112,9 +118,6 @@ class CategoriesController extends Controller
     {
         $categories = Category::findOrFail($id);
         $categories->delete();
-        if ($categories->image) {
-            Storage::disk('public')->delete($categories->image);
-        }
 
         //categories::destroy($id);
 
@@ -132,5 +135,30 @@ class CategoriesController extends Controller
             'disk' => 'public'
         ]);
         return $path;
+    }
+
+    public function trash()
+    {
+        $categories = Category::onlyTrashed()->paginate(3);
+        return view('dashboard.categories.trash', compact('categories'));
+    }
+    public function restore(Request $request, $id)
+    {
+        $categories = Category::onlyTrashed()->findOrFail($id);
+        $categories->restore();
+        return Redirect::route('dashboard.categories.trash')
+            ->with(['susses' => 'category restore']);
+    }
+    public function forceDelete($id)
+    {
+        $categories = Category::onlyTrashed()->findOrFail($id);
+        $categories->forceDelete();
+
+        if ($categories->image) {
+            Storage::disk('public')->delete($categories->image);
+        }
+
+        return Redirect::route('dashboard.categories.trash')
+            ->with(['susses' => 'category Delete!']);
     }
 }

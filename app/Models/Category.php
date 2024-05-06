@@ -2,16 +2,15 @@
 
 namespace App\Models;
 
-use App\Rules\Filter;
-use App\Rules\Uppercase;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Validation\Rule;
 
 class Category extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $guarded = [];
 
@@ -38,11 +37,19 @@ class Category extends Model
 
     public function scopeFilter(Builder $builder, $filters)
     {
-        if ($filters['name'] ?? false) {
-            $builder->where('name', 'LIKE', "%{$filters['name']}%");
-        }
-        if ($filters['status'] ?? false) {
-            $builder->where('status', 'LIKE', $filters['name']);
-        }
+        $builder->when($filters['name'] ?? false, function ($builder, $value) {
+            $builder->where('categories.name', 'LIKE', "%{$value}%");
+        });
+
+        $builder->when($filters['status'] ?? false, function ($builder, $value) {
+            $builder->where('categories.status', '=', $value);
+        });
+
+        // if ($filters['name'] ?? false) {
+        //     $builder->where('name', 'LIKE', "%{$filters['name']}%");
+        // }
+        // if ($filters['status'] ?? false) {
+        //     $builder->where('status', '=', $filters['name']);
+        // }
     }
 }
