@@ -18,9 +18,9 @@ class CategoriesController extends Controller
     {
         $request = request();
         $query = Category::query();
-        
+
         if ($name = $request->query('name')) {
-            $query->where('name', 'LIKE', '%{$name}%');
+            $query->where('name', 'LIKE', "%{$name}%");
         }
         if ($status = $request->query('status')) {
             $query->where('status', '=', $status);
@@ -42,14 +42,16 @@ class CategoriesController extends Controller
         return view('dashboard.categories.create', compact('parents', 'categories'));
     }
 
-    public function store(CategoryRequest $request)
+    public function store(Request $request)
     {
+        $request->validate(Category::rules());
+        //dd($request);
         $request->merge([
             'slug' => Str::slug($request->post('name'))
         ]);
         $data = $request->except('image');
         $data['image'] = $this->uploadImage($request);
-
+       
 
         // Mass Assignment
         $categories = Category::create($data);
@@ -93,11 +95,10 @@ class CategoriesController extends Controller
             ->with(['success' => 'تم الاضافة بنجاح']);
     }
 
-    public function update(CategoryRequest $request, string $id)
+    public function update(Request $request, string $id)
     {
 
-        // $request->validate(Category::rules($id));
-
+        $request->validate(Category::rules($id));
         $categories = Category::findOrFail($id);
 
         $old_image = $categories->image;

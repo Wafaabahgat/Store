@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 // all apis/Routes her must be apis authenticated
 
-Route::group(['middleware' => 'api', 'namespace' => 'Api'], function () {
-    Route::post(uri:'get-main-categories', action: 'CategoriesController@index');
-});
+// Route::group(['middleware' => 'api', 'namespace' => 'Api'], function () {
+//     Route::post(uri:'get-main-categories', action: 'CategoriesController@index');
+// });
