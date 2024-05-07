@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\CategoriesController;
+use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,8 @@ Route::group(
     function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
+        
+        // CategoriesController
         Route::get(
             '/categories/trash',
             [CategoriesController::class, 'trash']
@@ -29,10 +32,16 @@ Route::group(
             [CategoriesController::class, 'forceDelete']
         )->name('categories.force-delete');
 
-
-
-
         Route::resource('/categories', CategoriesController::class);
+
+
+        // ProductController
+        Route::get(
+            '/products/trash',
+            [CategoriesController::class, 'trash']
+        )->name('products.trash');
+
+        Route::resource('/products', ProductController::class);
     }
 );
 

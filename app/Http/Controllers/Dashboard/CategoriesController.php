@@ -23,7 +23,7 @@ class CategoriesController extends Controller
                 'parents.name as parent_name'
             ])
             ->filter($request->query())
-            ->paginate(3);
+            ->paginate(6);
         return view('dashboard.categories.index', compact('categories'));
     }
 

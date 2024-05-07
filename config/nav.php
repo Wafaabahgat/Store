@@ -17,7 +17,7 @@ return [
     ],
     [
         'icon' => 'nav-icon fas fa-th',
-        'route' => '/dashboard/Products',
+        'route' => '/dashboard/products',
         'title' => 'Products',
         'active' => 'dashboard.products.*',
     ],
