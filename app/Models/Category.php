@@ -52,4 +52,10 @@ class Category extends Model
         //     $builder->where('status', '=', $filters['name']);
         // }
     }
+    
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'category_id', 'id');
+    }
+
 }

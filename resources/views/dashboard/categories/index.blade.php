@@ -34,6 +34,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Parent</th>
+                <th scope="col">Parent #</th>
                 <th scope="col">Status</th>
                 <th scope="col">Image</th>
                 <th scope="col">Created_at</th>
@@ -45,8 +46,12 @@
             @forelse ($categories as $category)
                 <tr>
                     <th scope="row"> {{ $category->id }} </th>
-                    <td> {{ $category->name }} </td>
+                    <td>
+                        <a href="{{ route('dashboard.categories.show', $category->id) }}">{{ $category->name }}</a>
+
+                    </td>
                     <td> {{ $category->parent_name }} </td>
+                    <td> {{ $category->parent_count }} </td>
                     <td> {{ $category->status }} </td>
                     <td>
                         <img src="{{ asset('storage/' . $category->image) }}" alt="" height="60"

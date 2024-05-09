@@ -38,7 +38,7 @@ Route::group(
         // ProductController
         Route::get(
             '/products/trash',
-            [CategoriesController::class, 'trash']
+            [ProductController::class, 'trash']
         )->name('products.trash');
 
         Route::resource('/products', ProductController::class);

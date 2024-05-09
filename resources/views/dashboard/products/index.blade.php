@@ -34,7 +34,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Categories</th>
-                <th scope="col">Products</th>
+                <th scope="col">Stores</th>
                 <th scope="col">Status</th>
                 <th scope="col">Image</th>
                 <th scope="col">Created_at</th>
@@ -47,12 +47,14 @@
                 <tr>
                     <th scope="row"> {{ $product->id }} </th>
                     <td> {{ $product->name }} </td>
-                    <td> {{ $product->category_id }} </td>
-                    <td> {{ $product->product_id }} </td>
+                    <td> {{ $product->category->name }} </td>
+                    <td> {{ $product->store->name }} </td>
+                    {{-- <td> {{ $product->category_id }} </td>
+                    <td> {{ $product->store_id }} </td> --}}
+
                     <td> {{ $product->status }} </td>
                     <td>
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="" height="60"
-                            width="80" />
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="" height="60" width="80" />
                     </td>
                     <td> {{ $product->created_at }} </td>
                     <td>
