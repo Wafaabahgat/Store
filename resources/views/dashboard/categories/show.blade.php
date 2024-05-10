@@ -16,9 +16,9 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
-                <th scope="col">Parent</th>
-                <th scope="col">Parent #</th>
+                <th scope="col">Store</th>
                 <th scope="col">Status</th>
+                <th scope="col">Created At</th>
             </tr>
         </thead>
         <tbody>
@@ -29,11 +29,11 @@
 
             @forelse ($products as $product)
                 <tr>
-                    <th scope="row"> {{ $parent->id }} </th>
+                    <th scope="row"> {{ $product->id }} </th>
                     <td> {{ $product->name }} </td>
-                    <td> {{ $product->parent_name }} </td>
-                    <td> {{ $product->parent_count }} </td>
+                    <td> {{ $product->store->name??"" }} </td>
                     <td> {{ $product->status }} </td>
+                    <td> {{ $product->created_at }} </td>
                 </tr>
             @empty
                 <tr>

@@ -50,8 +50,8 @@
                         <a href="{{ route('dashboard.categories.show', $category->id) }}">{{ $category->name }}</a>
 
                     </td>
-                    <td> {{ $category->parent_name }} </td>
-                    <td> {{ $category->parent_count }} </td>
+                    <td> {{ $category->parent->name ?? '' }} </td>
+                    <td> {{ $category->parent->count ?? 'j' }} </td>
                     <td> {{ $category->status }} </td>
                     <td>
                         <img src="{{ asset('storage/' . $category->image) }}" alt="" height="60"

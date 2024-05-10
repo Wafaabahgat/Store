@@ -12,7 +12,7 @@
 
     <form action="{{ route('dashboard.profile.update') }}" method="post" enctype="multipart/form-data">
         @csrf
-        @method('put')
+        @method('patch')
         <div class="form-row">
             <div class="col-md-6">
                 <x-form.input name="first_name" label="First_name" :value='$user->profile->first_name' />
@@ -27,7 +27,7 @@
                 <x-form.input name="birthday" label="Birthday" :value='$user->profile->birthday' />
             </div>
             <div class="col-md-6">
-                <x-form.input name="gender" label="Gender" :value='$user->profile->gender' :options="['male' => 'Male', 'female' => 'Female']" :checked="$user->profile->gender" />
+                <x-form.radio name="gender" label="Gender" :value='$user->profile->gender' :options="['male' => 'Male', 'female' => 'Female']" :checked="$user->profile->gender" />
             </div>
         </div>
         
