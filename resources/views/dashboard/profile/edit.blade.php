@@ -7,8 +7,8 @@
     <li class="breadcrumb-item active"> @yield('title') </li>
 @endsection
 
-
 @section('content')
+<x-alert type="success" />
 
     <form action="{{ route('dashboard.profile.update') }}" method="post" enctype="multipart/form-data">
         @csrf
@@ -24,13 +24,13 @@
 
         <div class="form-row">
             <div class="col-md-6">
-                <x-form.input name="birthday" label="Birthday" :value='$user->profile->birthday' />
+                <x-form.input name="birthday" label="Birthday" :value='$user->profile->birthday' type="date"/>
             </div>
             <div class="col-md-6">
                 <x-form.radio name="gender" label="Gender" :value='$user->profile->gender' :options="['male' => 'Male', 'female' => 'Female']" :checked="$user->profile->gender" />
             </div>
         </div>
-        
+
         <div class="form-row">
             <div class="col-md-4">
                 <x-form.input name="street_address" label="Street Address" :value='$user->profile->street_address' />
@@ -53,6 +53,10 @@
             <div class="col-md-4">
                 <x-form.select name="locale" :options="$locales" label="Locale" :selected='$user->profile->locale' />
             </div>
+        </div>
+
+        <div class="mt-4 form-group">
+            <button type="submit" class="btn btn-primary">Save</button>
         </div>
 
     </form>

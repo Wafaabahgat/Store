@@ -25,14 +25,7 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
-        $request->validate([
-            'first_name' => ['required', 'string', 'max:255', 'min:3'],
-            'last_name' => ['required', 'string', 'max:255', 'min:3'],
-            'birthday' => ['nullable', 'date', 'before:today'],
-            'gender' => ['in:male,female'],
-            'country' => ['required', 'string', 'size:2']
-        ]);
-
+        $request->validate(Profile::profile_validate());
         $user = $request->user();
 
         $user->profile->fill($request->all())->save();

@@ -26,9 +26,20 @@ class Product extends Model
             ->withDefault();
     }
 
-    public function store() 
+    public function store()
     {
         return $this->belongsTo(Store::class, 'store_id', 'id')
             ->withDefault();
+    }
+    public function tags()
+    {
+        return $this->belongsToMany(
+            Tag::class,
+            'product_tag',
+            'product_id',
+            'tag_id',
+            'id',
+            'id'
+        );
     }
 }

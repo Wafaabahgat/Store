@@ -20,4 +20,16 @@ class Profile extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public static function profile_validate()
+    {
+        return [
+            'first_name' => ['required', 'string', 'max:255', 'min:3'],
+            'last_name' => ['required', 'string', 'max:255', 'min:3'],
+            'birthday' => ['nullable', 'date', 'before:today'],
+            'gender' => ['in:male,female'],
+            'country' => ['required', 'string', 'size:2']
+        ];
+    }
+
 }
