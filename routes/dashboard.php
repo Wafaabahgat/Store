@@ -11,7 +11,7 @@ Route::group(
     [
         'prefix' => 'dashboard',
         'as' => "dashboard.",
-        "middleware" => ['auth']
+        "middleware" => ['auth', 'auth.type:admin,super-admin']
     ],
     function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

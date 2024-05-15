@@ -83,6 +83,7 @@ return [
     */
 
     'locale' => 'en',
+    'currency' => 'USD',
 
     /*
     |--------------------------------------------------------------------------
@@ -194,7 +195,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        App\Providers\CartServiceProvider::class,
     ],
 
     /*
@@ -210,6 +211,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Currency' => App\Helper\Currency::class,
     ])->toArray(),
 
 ];

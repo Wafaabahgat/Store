@@ -15,12 +15,12 @@ class Tag extends Model
     public function products()
     {
         return $this->belongsToMany(
-            Product::class,
-            'product_tag',
-            'product_id',
-            'tag_id',
-            'id',
-            'id'
+            Product::class
+            // 'product_tag',
+            // 'product_id',
+            // 'tag_id',
+            // 'id',
+            // 'id'
         );
     }
 }

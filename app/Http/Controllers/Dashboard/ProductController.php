@@ -44,19 +44,23 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $product->update($request->except('tags'));
-        
-        dd($request->post('tags'));
-        
-        $tags =  json_decode($request->post('tags'));
+
+        //dd($request->post('tags'));
+
+        $tags = explode(',',$request->post('tags')) ?? [];
+
+        //dd($tags);
+
         $tag_ids = [];
         $saved_tag = Tag::all();
 
         foreach ($tags as $item) {
-            $slug = Str::slug($item->value);
+            //dd($item);
+            $slug = Str::slug($item);
             $tag = $saved_tag->where('slug', $slug)->first();
             if (!$tag) {
                 $tag = Tag::create([
-                    'name' => $item->value,
+                    'name' => $item,
                     'slug' => $slug,
                 ]);
             }
