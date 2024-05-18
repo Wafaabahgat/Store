@@ -6,10 +6,12 @@ use NumberFormatter;
 
 class Currency
 {
-    public function __invoke(...$params)
+    // use class as function
+    public function __invoke(...$params) //args
     {
         return static::format(...$params);
     }
+    
     public static function format($value)
     {
         $formatter = new NumberFormatter(config('app.locale'), NumberFormatter::CURRENCY);

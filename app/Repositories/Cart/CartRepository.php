@@ -5,14 +5,14 @@ namespace App\Repositories\Cart;
 use App\Models\Product;
 use Illuminate\Support\Collection;
 
-interface CartRepository
+//عشان اضمن ان جميع ال repositore لنفس النوع متشابهين في ال method
+interface CartRepository  
 {
     public function get(): Collection;
 
     public function add(Product $product, $quantity = 1);
 
     public function update(Product $product, $quantity);
-    // public function update($id, $quantity);
 
     public function delete($id);
 

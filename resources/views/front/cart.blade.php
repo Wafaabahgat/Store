@@ -12,7 +12,7 @@
                     <div class="col-lg-6 col-md-6 col-12">
                         <ul class="breadcrumb-nav">
                             <li><a href="{{ route('home') }}"><i class="lni lni-home"></i> Home</a></li>
-                            <li><a href="{{ route('front.products.index') }}"><i class="lni lni-grid"></i> Products</a>
+                            <li><a href="{{ route('products.index') }}"><i class="lni lni-grid"></i> Products</a>
                             </li>
                             <li>Cart</li>
                         </ul>
@@ -54,12 +54,12 @@
                     <div class="cart-single-list" id="{{ $item->id }}">
                         <div class="row align-items-center">
                             <div class="col-lg-1 col-md-1 col-12">
-                                <a href="{{ route('front.products.show', $item->product->slug) }}"><img
+                                <a href="{{ route('products.show', $item->product->slug) }}"><img
                                         src="{{ $item->product->image_url }}" alt="#"></a>
                             </div>
                             <div class="col-lg-4 col-md-3 col-12">
                                 <h5 class="product-name">
-                                    <a href="{{ route('front.products.show', $item->product->slug) }}">
+                                    <a href="{{ route('products.show', $item->product->slug) }}">
                                         {{ $item->product->name }}</a>
                                 </h5>
                                 <p class="product-des">
@@ -117,7 +117,8 @@
                                         <li class="last">You Pay<span>$2531.00</span></li>
                                     </ul>
                                     <div class="button">
-                                        <a href="{{ route('checkout') }}" class="btn">Checkout</a>
+                                        {{-- <a href="{{ route('checkout') }}" class="btn">Checkout</a> --}}
+                                        <a href="" class="btn">Checkout</a>
                                         <a href="{{ route('home') }}" class="btn btn-alt">Continue shopping</a>
                                     </div>
                                 </div>

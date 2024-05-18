@@ -39,7 +39,7 @@
                             <input type="hidden" name="product_id" value="{{ $product->id }}" id="">
                             <h2 class="title">{{ $product->name }}</h2>
                             <p class="category"><i class="lni lni-tag"></i>{{ $product->category->name }}</p>
-                            
+
                             @if ($product->compare_price)
                                 <h3 class="price">{{ Currency::format($product->price) }}
                                     <span>{{ Currency::format($product->compare_price) }}</span>
@@ -48,9 +48,9 @@
                                 <h3 class="price">{{ Currency::format($product->price) }}
                                 </h3>
                             @endif
-                            
+
                             <p class="info-text line-clamp-3">{{ $product->disc }}</p>
-                            
+
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-12">
                                     <div class="form-group quantity">

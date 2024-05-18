@@ -12,41 +12,53 @@ use Illuminate\Support\Facades\App;
 
 class CartController extends Controller
 {
-    public function index(CartRepository $cart)
+
+    protected $cart;
+
+    public function __construct(CartRepository $cart)
+    {
+        $this->cart = $cart;
+    }
+
+    public function index()
     {
         return view("front.cart", [
-            "cart" => $cart
+            "cart" => $this->cart
         ]);
     }
 
-    public function store(Request $request, CartRepository $cart)
+    public function store(Request $request)
     {
         $request->validate(Cart::cart_validate());
 
         $product = Product::findOrFail(
             $request->post('product_id')
         );
-        $cart->add(
+        $this->cart->add(
             $product,
             $request->post('quantity')
         );
+
+        return redirect()
+            ->route('cart.index')
+            ->with('success', 'Product Add To Cart!');
     }
 
-    public function update(Request $request, CartRepository $cart)
+    public function update(Request $request)
     {
         $request->validate(Cart::cart_validate());
 
         $product = Product::findOrFail(
             $request->post('product_id')
         );
-        $cart->update(
+        $this->cart->update(
             $product,
             $request->post('quantity')
         );
     }
 
-    public function destroy(CartRepository $cart, string $id)
+    public function destroy(string $id)
     {
-        $cart->delete($id);
+        $this->cart->delete($id);
     }
 }

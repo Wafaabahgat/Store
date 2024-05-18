@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\ProductsController;
 use App\Http\Controllers\ProfileController;
@@ -24,6 +25,9 @@ Route::get('/products', [ProductsController::class, 'index'])
 
 Route::get('/products/{product:slug}', [ProductsController::class, 'show'])
     ->name('products.show');
+
+Route::resource('/cart', CartController::class);
+
 
 
 

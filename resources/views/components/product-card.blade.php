@@ -3,14 +3,15 @@
     <div class="single-product">
 
         <div class="product-image">
-            {{-- <a href="{{ route('product', $product->slug ?? '') }}">
+            {{-- <a href="{{ route('product', $product->slug ?? '') }}"> --}}
+            <a href="">
                 <img src="{{ $product->image_url }}" alt="#{{ $product->name }} img" style="aspect-ratio: 1/1" />
-            </a> --}}
+            </a>
             @if ($product->compare_price)
                 <span class="sale-tag">{{ $product->sale_price }}%</span>
             @endif
 
-            {{-- <form action="{{ route('cart.store') }}" method="POST">
+            <form action="{{ route('cart.store') }}" method="POST">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}" id="">
                 <input type="hidden" name="quantity" value="1" id="">
@@ -20,15 +21,16 @@
                     <button type="submit" class="btn button bg-primary-subtle "><i class="lni lni-cart"></i> Add to
                         Cart</button>
                 </div>
-            </form> --}}
+            </form>
         </div>
 
         <div class="product-info">
             <span class="category">{{ $product->category->name ?? '' }}</span>
-            {{-- <h4 class="title">
-                <a style="display: block"
-                    href="{{ route('product', $product->slug ?? '') }}">{{ $product->name ?? '' }}</a>
-            </h4> --}}
+            <h4 class="title">
+                {{-- <a style="display: block" href="{{ route('product', $product->slug ?? '') }}">
+                    {{ $product->name ?? '' }}
+                </a> --}}
+            </h4>
             <div class="price">
                 @if ($product->compare_price)
                     <span>{{ Currency::format($product->compare_price) }}</span>
