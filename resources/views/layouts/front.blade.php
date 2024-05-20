@@ -139,9 +139,9 @@
                                     <span>(+100) 123 456 7890</span>
                                 </h3>
                             </div>
-                            {{-- <div class="navbar-cart">
+                             <div class="navbar-cart">
                                 <x-cart-menu />
-                            </div> --}}
+                            </div> 
                         </div>
                     </div>
                 </div>

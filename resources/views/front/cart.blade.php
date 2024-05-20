@@ -25,11 +25,11 @@
     <div class="shopping-cart section">
         <div class="container">
             <div class="cart-list-head">
+
                 <!-- Cart List Title -->
                 <div class="cart-list-title">
                     <div class="row">
                         <div class="col-lg-1 col-md-1 col-12">
-
                         </div>
                         <div class="col-lg-4 col-md-3 col-12">
                             <p>Product Name</p>
@@ -49,6 +49,7 @@
                     </div>
                 </div>
                 <!-- End Cart List Title -->
+
                 @foreach ($cart->get() as $item)
                     <!-- Cart Single List list -->
                     <div class="cart-single-list" id="{{ $item->id }}">
@@ -87,10 +88,8 @@
                     </div>
                     <!-- End Single List list -->
                 @endforeach
-
-                
             </div>
-            
+
             <div class="row">
                 <div class="col-12">
                     <!-- Total Amount -->
@@ -131,6 +130,7 @@
         </div>
     </div>
     <!--/ End Shopping Cart -->
+
     @push('scripts')
         <script>
             const csrf_token = "{{ csrf_token() }}"

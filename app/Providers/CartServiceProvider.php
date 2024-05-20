@@ -11,6 +11,8 @@ class CartServiceProvider extends ServiceProvider
     /**
      * Register services.
      */
+    //bind 
+    // تسمحلي اخزن في ال Servicecontainar
     public function register(): void
     {
         $this->app->bind(CartRepository::class, function () {
