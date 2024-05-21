@@ -3,7 +3,7 @@
     <div class="single-product">
 
         <div class="product-image">
-            {{-- <a href="{{ route('product', $product->slug ?? '') }}"> --}}
+            <a href="{{ route('products.show', $product->slug ?? '') }}">
             <a href="">
                 <img src="{{ $product->image_url }}" alt="#{{ $product->name }} img" style="aspect-ratio: 1/1" />
             </a>
@@ -17,9 +17,10 @@
                 <input type="hidden" name="quantity" value="1" id="">
 
                 <div class="button">
-
-                    <button type="submit" class="btn button bg-primary-subtle "><i class="lni lni-cart"></i> Add to
-                        Cart</button>
+                    <button type="submit" class="btn button bg-primary-subtle ">
+                        <i class="lni lni-cart"></i> 
+                        Add to Cart
+                    </button>
                 </div>
             </form>
         </div>
@@ -27,9 +28,9 @@
         <div class="product-info">
             <span class="category">{{ $product->category->name ?? '' }}</span>
             <h4 class="title">
-                {{-- <a style="display: block" href="{{ route('product', $product->slug ?? '') }}">
+                <a style="display: block" href="{{ route('products.show', $product->slug ?? '') }}">
                     {{ $product->name ?? '' }}
-                </a> --}}
+                </a>
             </h4>
             <div class="price">
                 @if ($product->compare_price)
