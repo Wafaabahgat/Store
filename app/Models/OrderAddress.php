@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class OrderAddress extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    
 }
