@@ -14,6 +14,7 @@ class ProductController extends Controller
 {
     public function index()
     {
+        Product::query()->update(['quantity' => 100]);
         $products = Product::with(['category', 'store'])->paginate(20);
         return view('dashboard.products.index', compact('products'));
     }

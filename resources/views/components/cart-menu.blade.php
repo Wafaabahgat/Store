@@ -9,7 +9,7 @@
             <span>{{ $items->count() }} {{ __('Items') }}</span>
             <a href="/cart">{{ __('View Cart') }}</a>
         </div>
-        
+
         <ul class="shopping-list">
             @foreach ($items as $item)
                 <li>
@@ -37,7 +37,7 @@
             </div>
             <div class="button">
                 {{-- <a href="{{ route('checkout') }}" class="btn animate">{{ __('Checkout') }}</a> --}}
-                <a href="#" class="btn animate">{{ __('Checkout') }}</a>
+                <a href="{{ route('checkout') }}" class="btn animate">{{ __('Checkout') }}</a>
             </div>
         </div>
     </div>

@@ -62,7 +62,7 @@
                                             <div class="single-form form-default">
                                                 <label>Phone Number</label>
                                                 <div class="form-input form">
-                                                    <x-form.input type="text" name="addr[billing][phone]"
+                                                    <x-form.input type="text" name="addr[billing][phone_number]"
                                                         placeholder="Phone Number" />
                                                 </div>
                                             </div>
@@ -71,7 +71,7 @@
                                             <div class="single-form form-default">
                                                 <label>Street Address</label>
                                                 <div class="form-input form">
-                                                    <x-form.input type="text" name="addr[billing][street]"
+                                                    <x-form.input type="text" name="addr[billing][street_address]"
                                                         placeholder="Street Address" />
                                                 </div>
                                             </div>
@@ -165,7 +165,7 @@
                                             <div class="single-form form-default">
                                                 <label>Phone Number</label>
                                                 <div class="form-input form">
-                                                    <x-form.input type="text" name="addr[shipping][phone]"
+                                                    <x-form.input type="text" name="addr[shipping][phone_number]"
                                                         placeholder="Phone Number" />
                                                 </div>
                                             </div>
@@ -174,7 +174,7 @@
                                             <div class="single-form form-default">
                                                 <label>Street Address</label>
                                                 <div class="form-input form">
-                                                    <x-form.input type="text" name="addr[shipping][street]"
+                                                    <x-form.input type="text" name="addr[shipping][street_address]"
                                                         placeholder="Street Address" />
                                                 </div>
                                             </div>

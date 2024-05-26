@@ -4,25 +4,26 @@
 
         <div class="product-image">
             <a href="{{ route('products.show', $product->slug ?? '') }}">
-            <a href="">
-                <img src="{{ $product->image_url }}" alt="#{{ $product->name }} img" style="aspect-ratio: 1/1" />
-            </a>
-            @if ($product->compare_price)
-                <span class="sale-tag">{{ $product->sale_price }}%</span>
-            @endif
+                <a href="">
+                    <img src="{{ $product->image_url }}" alt="#{{ $product->name }} img" style="aspect-ratio: 1/1" />
+                </a>
+                @if ($product->compare_price)
+                    <span class="sale-tag">{{ $product->sale_price }}%</span>
+                @endif
 
-            <form action="{{ route('cart.store') }}" method="POST">
-                @csrf
-                <input type="hidden" name="product_id" value="{{ $product->id }}" id="">
-                <input type="hidden" name="quantity" value="1" id="">
+                {{-- <form action="{{ route('cart.store') }}" method="POST"> --}}
+                    <form action="{{  route('home') ) }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}" id="">
+                    <input type="hidden" name="quantity" value="1" id="">
 
-                <div class="button">
-                    <button type="submit" class="btn button bg-primary-subtle ">
-                        <i class="lni lni-cart"></i> 
-                        Add to Cart
-                    </button>
-                </div>
-            </form>
+                    <div class="button">
+                        <button type="submit" class="btn button bg-primary-subtle ">
+                            <i class="lni lni-cart"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </form>
         </div>
 
         <div class="product-info">
