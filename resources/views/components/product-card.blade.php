@@ -11,8 +11,8 @@
                     <span class="sale-tag">{{ $product->sale_price }}%</span>
                 @endif
 
-                {{-- <form action="{{ route('cart.store') }}" method="POST"> --}}
-                    <form action="{{  route('home') ) }}" method="POST">
+                <form action="{{ route('cart.store') }}" method="POST">
+                    {{-- <form action="{{  route('home') ) }}" method="POST"> --}}
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}" id="">
                     <input type="hidden" name="quantity" value="1" id="">
