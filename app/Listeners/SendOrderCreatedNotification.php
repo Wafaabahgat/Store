@@ -23,13 +23,13 @@ class SendOrderCreatedNotification
      */
     public function handle(object $event): void
     {
-         $order = $event->order;
+        $order = $event->order;
 
         $user = User::where('store_id', $order->store_id)->first(); //$notifiable (user) in OrderCreatedNotification
         $user->notify(new OrderCreatedNotification($order));
 
         //many users
-        $users = User::where('store_id', $order->store_id)->get();
-        Notification::send($users, new OrderCreatedNotification($order));
+        //     $users = User::where('store_id', $order->store_id)->get();
+        //     Notification::send($users, new OrderCreatedNotification($order));
     }
 }
