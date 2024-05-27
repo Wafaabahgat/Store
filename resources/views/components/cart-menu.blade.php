@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="content">
-                        <h4><a href=href="{{ route('products.show', $item->product->slug) }}">
+                        <h4><a href="{{ route('products.show', $item->product->slug) }}">
                                 {{ $item->product->name }}</a></h4>
                         <p class="quantity">{{ $item->quantity }}x - <span
                                 class="amount">{{ Currency::format($item->product->price) }}</span>
@@ -36,7 +36,6 @@
                 <span class="total-amount">{{ Currency::format($total) }}</span>
             </div>
             <div class="button">
-                {{-- <a href="{{ route('checkout') }}" class="btn animate">{{ __('Checkout') }}</a> --}}
                 <a href="{{ route('checkout') }}" class="btn animate">{{ __('Checkout') }}</a>
             </div>
         </div>
