@@ -6,6 +6,7 @@ use App\Events\OrderCreated;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\User;
 use App\Repositories\Cart\CartRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,28 +29,29 @@ class CheckoutController extends Controller
 
     public function store(CartRepository $cart, Request $request)
     {
-        $request->validate([
-            'addr.billing.first_name' => ['required', 'string', 'max:255'],
-            'addr.billing.last_name' => ['required', 'string', 'max:255'],
-            'addr.billing.phone_number' => ['required', 'string', 'max:255'],
-            'addr.billing.email' => ['nullable', 'email', 'max:255'],
-            'addr.billing.street' => ['required', 'string', 'max:255'],
-            'addr.billing.city' => ['required', 'string', 'max:255'],
-            'addr.billing.state' => ['nullable', 'string', 'max:255'],
-            'addr.billing.country' => ['required', 'string', 'min:2', 'max:2'],
-            'addr.billing.postal_code' => ['nullable', 'string', 'max:255'],
-            // shipping
-            'addr.shipping.first_name' => ['required', 'string', 'max:255'],
-            'addr.shipping.last_name' => ['required', 'string', 'max:255'],
-            'addr.shipping.phone_number' => ['required', 'string', 'max:255'],
-            'addr.shipping.email' => ['nullable', 'email', 'max:255'],
-            'addr.shipping.street' => ['required', 'string', 'max:255'],
-            'addr.shipping.city' => ['required', 'string', 'max:255'],
-            'addr.shipping.state' => ['nullable', 'string', 'max:255'],
-            'addr.shipping.country' => ['required', 'string', 'min:2', 'max:2'],
-            'addr.shipping.postal_code' => ['nullable', 'string', 'max:255'],
-        ]);
+        // dd('hhhhhhhhhhhh');
 
+        // $request->validate([
+        //     'addr.billing.first_name' => ['required', 'string', 'max:255'],
+        //     'addr.billing.last_name' => ['required', 'string', 'max:255'],
+        //     'addr.billing.phone_number' => ['required', 'string', 'max:255'],
+        //     'addr.billing.email' => ['nullable', 'email', 'max:255'],
+        //     'addr.billing.street' => ['required', 'string', 'max:255'],
+        //     'addr.billing.city' => ['required', 'string', 'max:255'],
+        //     'addr.billing.state' => ['nullable', 'string', 'max:255'],
+        //     'addr.billing.country' => ['required', 'string', 'min:2', 'max:2'],
+        //     'addr.billing.postal_code' => ['nullable', 'string', 'max:255'],
+        //     // shipping
+        //     'addr.shipping.first_name' => ['required', 'string', 'max:255'],
+        //     'addr.shipping.last_name' => ['required', 'string', 'max:255'],
+        //     'addr.shipping.phone_number' => ['required', 'string', 'max:255'],
+        //     'addr.shipping.email' => ['nullable', 'email', 'max:255'],
+        //     'addr.shipping.street' => ['required', 'string', 'max:255'],
+        //     'addr.shipping.city' => ['required', 'string', 'max:255'],
+        //     'addr.shipping.state' => ['nullable', 'string', 'max:255'],
+        //     'addr.shipping.country' => ['required', 'string', 'min:2', 'max:2'],
+        //     'addr.shipping.postal_code' => ['nullable', 'string', 'max:255'],
+        // ]);
         $items = $cart->get()->groupBy('product.store_id')->all();
 
         DB::beginTransaction();

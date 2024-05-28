@@ -22,11 +22,11 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        
+
         OrderCreated::class => [
             DecutProductQuantity::class,
             SendOrderCreatedNotification::class,
-            // EmptyCart::class,
+            //EmptyCart::class,
         ],
 
         // 'order.created' => [

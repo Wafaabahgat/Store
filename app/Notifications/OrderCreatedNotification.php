@@ -29,7 +29,20 @@ class OrderCreatedNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail', 'database', 'broadcast'];
+        // return ['mail', 'database', 'broadcast'];
+        return ['mail', 'database'];
+
+        $channels = ['database'];
+        if ($notifiable->notification_preferences['order_created']['sms'] ?? false) {
+            $channels[] = 'vonage';
+        }
+        if ($notifiable->notification_preferences['order_created']['mail'] ?? false) {
+            $channels[] = 'mail';
+        }
+        if ($notifiable->notification_preferences['order_created']['broadcast'] ?? false) {
+            $channels[] = 'broadcast';
+        }
+        return $channels;
     }
 
     /**
@@ -40,12 +53,12 @@ class OrderCreatedNotification extends Notification
         $addr = $this->order->billingAddresses;
 
         return (new MailMessage)
-             ->subject("New order #{$this->order->number}")
-             ->from('Notification@Story.online', 'Story') //replace .env
-             ->greeting("Hi {$notifiable->name},")
-             ->line("A new order (#{$this->order->number}) created by {$addr->name} from {{$addr->country_name}}.")
-             ->action('View Order', url('/dashboard'))
-             ->line('Thank you for using our application!');
+            ->subject("New order #{$this->order->number}")
+            // ->from('Notification@Story.online', 'Story') //replace .env
+            ->greeting("Hi {$notifiable->name},")
+            ->line("A new order (#{$this->order->number}) created by {$addr->name} from {{$addr->country_name}}.")
+            ->action('View Order', url('/dashboard'))
+            ->line('Thank you for using our application!');
     }
 
     /**

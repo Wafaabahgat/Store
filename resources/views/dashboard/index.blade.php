@@ -70,5 +70,4 @@
         </div>
         <!-- /.col-md-6 -->
     </div>
-    <!-- /.row -->
 @endsection
