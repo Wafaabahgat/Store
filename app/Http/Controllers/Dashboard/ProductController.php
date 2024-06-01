@@ -48,7 +48,7 @@ class ProductController extends Controller
 
         //dd($request->post('tags'));
 
-        $tags = explode(',',$request->post('tags')) ?? [];
+        $tags = explode(',', $request->post('tags')) ?? []; //explode => tranform string to array
 
         //dd($tags);
 
@@ -68,7 +68,7 @@ class ProductController extends Controller
             $tag_ids[] = $tag->id;
         }
 
-        $product->tags()->sync($tag_ids);
+        $product->tags()->sync($tag_ids); // tags() => Relations
 
         return redirect()
             ->route('dashboard.products.index')

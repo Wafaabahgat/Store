@@ -17,17 +17,20 @@ class CategoriesController extends Controller
     public function index()
     {
         $request = request();
-        $categories = Category::
-            with('parent')
-            // leftJoin('categories as parents', 'parents.id', '=', 'categories.parent_id')
-            // ->select([
-            //     'categories.*',
-            //     'parents.name as parent_name'
-            // ])
+        $categories = Category::with('parent')
             ->withCount('products')
-            ->filter($request->query())
+            ->filter($request->query())  //localScope
             ->paginate(8);
-            //->dd();
+
+        // leftJoin('categories as parents', 'parents.id', '=', 'categories.parent_id')
+        // ->select([
+        //     'categories.*',
+        //     'parents.name as parent_name'
+        // ])
+        // ->withCount('products', function ($query) {
+        //     $query->where('status', '=', 'active');
+        // })
+        //->dd();
         return view('dashboard.categories.index', compact('categories'));
     }
 
@@ -46,6 +49,7 @@ class CategoriesController extends Controller
         $request->merge([
             'slug' => Str::slug($request->post('name'))
         ]);
+
         $data = $request->except('image');
         $data['image'] = $this->uploadImage($request);
 
@@ -94,6 +98,7 @@ class CategoriesController extends Controller
             ->with(['success' => 'تم الاضافة بنجاح']);
     }
 
+    // public function update(CategoryRequest $request, string $id)
     public function update(Request $request, string $id)
     {
 
@@ -122,8 +127,12 @@ class CategoriesController extends Controller
 
     public function destroy(string $id)
     {
-        $categories = Category::findOrFail($id);
-        $categories->delete();
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        if ($category->image) {
+            Storage::disk('public')->delete($category->image);
+        }
 
         //categories::destroy($id);
 
@@ -131,18 +140,20 @@ class CategoriesController extends Controller
             ->with(['delete' => 'تم الحذف بنجاح']);
     }
 
+    ///////////////////////////////////////
     protected function uploadImage(Request $request)
     {
         if (!$request->hasFile('image')) {
             return;
         }
-        $file = $request->file('image');
+        $file = $request->file('image'); //uploadFile object
         $path = $file->store('uploads', [
             'disk' => 'public'
         ]);
         return $path;
     }
 
+    /////////////////////////////////////
     public function trash()
     {
         $categories = Category::onlyTrashed()->paginate(3);

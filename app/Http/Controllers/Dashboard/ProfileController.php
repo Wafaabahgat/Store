@@ -31,6 +31,7 @@ class ProfileController extends Controller
         $user->profile->fill($request->all())->save();
         return redirect()->route('dashboard.profile.edit')->with('success', 'Profile Updated!!');
 
+        /////////////////////////////////////////////////
         // $profile = $user->profile;
 
         // if ($profile->user_id) {
@@ -40,7 +41,7 @@ class ProfileController extends Controller
         //     // 'user_id'=>$user->id,
         //     // ]);
         //     // Profile::create($request->all());
-
+        /////////////////////////////////////////////////
         //     $user->profile()->create($request->all());
         // }
     }

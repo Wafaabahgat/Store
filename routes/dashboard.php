@@ -50,8 +50,4 @@ Route::group(
 );
 
 
-// Route::get('/dashboard', [DashboardController::class, 'index'])
-//     ->middleware(['auth', 'verified'])
-//     ->name('dashboard');
-
-// Route::resource('dashboard/categories', CategoriesController::class);
+// Route::middleware('quth')->prefix('dashboard')->as('dashboard.')->group(function(){});

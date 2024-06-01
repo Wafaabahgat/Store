@@ -36,13 +36,13 @@ return [
             'throw' => false,
         ],
 
-        // 'uploads' => [
-        //     'driver' => 'local',
-        //     'root' => storage_path('uploads'),
-        //     'url' => env('APP_URL').'/uploads',
-        //     'visibility' => 'public',
-        //     'throw' => false,
-        // ],
+        'uploads' => [
+            'driver' => 'local',
+            'root' => storage_path('uploads'),
+            'url' => env('APP_URL').'/uploads',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
 
         'public' => [
             'driver' => 'local',

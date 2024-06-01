@@ -24,14 +24,14 @@
         <tbody>
 
             @php
-                $products = $category->products()->with('store')->paginate();
+                $products = $category->products()->with('store')->paginate(); //products that belongTo this category
             @endphp
 
             @forelse ($products as $product)
                 <tr>
                     <th scope="row"> {{ $product->id }} </th>
                     <td> {{ $product->name }} </td>
-                    <td> {{ $product->store->name??"" }} </td>
+                    <td> {{ $product->store->name ?? '' }} </td>
                     <td> {{ $product->status }} </td>
                     <td> {{ $product->created_at }} </td>
                 </tr>
@@ -41,7 +41,7 @@
                         No products yet.
                     </td>
                 </tr>
-            @endforelse 
+            @endforelse
         </tbody>
     </table>
 

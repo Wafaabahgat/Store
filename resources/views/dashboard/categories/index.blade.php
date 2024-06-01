@@ -15,8 +15,8 @@
 
     </div>
 
-    <x-alert type="success" />
-    <x-alert type="delete" />
+    <x-alert type="success" style="success" />
+    <x-alert type="delete" style="danger" />
 
     <form action="{{ URL::current() }}" method="get" class="mb-2 justify-content d-flex">
         <x-form.input name="name" type="text" placeholder="Name" :value="request('name')" />
@@ -51,7 +51,7 @@
 
                     </td>
                     <td> {{ $category->parent->name ?? '' }} </td>
-                    <td> {{ $category->parent->count ?? 'j' }} </td>
+                    <td> {{ $category->parent->count ?? 'null' }} </td>
                     <td> {{ $category->status }} </td>
                     <td>
                         <img src="{{ asset('storage/' . $category->image) }}" alt="" height="60"
@@ -71,7 +71,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="7">
+                    <td colspan="9">
                         No categories yet.
                     </td>
                 </tr>

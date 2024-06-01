@@ -1,5 +1,5 @@
    @if (session()->has($type))
-        <div class="alert alert-{{$type}}" role="alert">
+        <div class="alert" role="alert">
             {{ session($type) }}
         </div>
     @endif

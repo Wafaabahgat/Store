@@ -52,14 +52,18 @@ class Category extends Model
         //     $builder->where('status', '=', $filters['name']);
         // }
     }
-    
+
+    ////////////////////////////////
     public function products()
     {
         return $this->hasMany(Product::class, 'category_id', 'id');
     }
     public function parent()
     {
-        return $this->belongsTo(Category::class, 'parent_id', 'id')->withDefault();
+        return $this->belongsTo(Category::class, 'parent_id', 'id')
+            ->withDefault([
+                'name' => '-',
+                // 'name' => 'Main Category',
+            ]);
     }
-
 }
