@@ -15,8 +15,8 @@
 
     </div>
 
-    <x-alert type="success" />
-    <x-alert type="delete" />
+    <x-alert type="success" style="success" />
+    <x-alert type="delete" style="danger" />
 
     <form action="{{ URL::current() }}" method="get" class="mb-2 justify-content d-flex">
         <x-form.input name="name" type="text" placeholder="Name" :value="request('name')" />
