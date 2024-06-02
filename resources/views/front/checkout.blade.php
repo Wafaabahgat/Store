@@ -335,7 +335,7 @@
                             </div>
                         </div>
                         <div class="checkout-sidebar-banner mt-30">
-                            <img src="assets/images/banner/banner.jpg" alt="#">
+                            <img src={{ asset('assets/images/banner/banner.jpg') }} alt="#">
                         </div>
                     </div>
                 </div>

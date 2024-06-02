@@ -130,6 +130,9 @@
             </div>
         </div>
         <!-- End Topbar -->
+        
+
+        {{-- ///////////////////////////////////////////// --}}
         <!-- Start Header Middle -->
         <div class="header-middle">
             <div class="container">
@@ -142,18 +145,29 @@
                         <!-- End Header Logo -->
                     </div>
                     <div class="col-lg-5 col-md-7 d-xs-none">
-                        <!-- Start Main Menu Search -->
+                         <!-- Start Main Menu Search -->
                         <div class="main-menu-search">
                             <!-- navbar search start -->
-                            {{-- <form action="{{ route('products') }}" class="navbar-search search-style-5">
+                            <div class="navbar-search search-style-5">
+                                <div class="search-select">
+                                    <div class="select-position">
+                                        <select id="select1">
+                                            <option selected>All</option>
+                                            <option value="1">option 01</option>
+                                            <option value="2">option 02</option>
+                                            <option value="3">option 03</option>
+                                            <option value="4">option 04</option>
+                                            <option value="5">option 05</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="search-input">
-                                    <input type="text" value="{{ old('name', request('name')) }}" name="name"
-                                        placeholder="Search">
+                                    <input type="text" placeholder="Search">
                                 </div>
                                 <div class="search-btn">
                                     <button><i class="lni lni-search-alt"></i></button>
                                 </div>
-                            </form> --}}
+                            </div>
                             <!-- navbar search Ends -->
                         </div>
                         <!-- End Main Menu Search -->
@@ -167,6 +181,12 @@
                                 </h3>
                             </div>
                             <div class="navbar-cart">
+                                <div class="wishlist">
+                                    <a href="javascript:void(0)">
+                                        <i class="lni lni-heart"></i>
+                                        <span class="total-items">0</span>
+                                    </a>
+                                </div>
                                 <x-cart-menu />
                             </div>
                         </div>
@@ -174,7 +194,12 @@
                 </div>
             </div>
         </div>
+    
+
         <!-- End Header Middle -->
+        {{-- ///////////////////////////////////////////// --}}
+
+        
         <!-- Start Header Bottom -->
         <div class="container">
             <div class="row align-items-center">
