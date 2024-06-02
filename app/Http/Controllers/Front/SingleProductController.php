@@ -6,12 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ProductsController extends Controller
+class SingleProductController extends Controller
 {
     public function index()
     {
         // $products = Product::paginate();
-        // return view('front.products.index', compact('products'));
+        // return view('front.singleproduct.index', compact('products'));
     }
 
     // public function show($slug)
@@ -24,7 +24,6 @@ class ProductsController extends Controller
             abort(404);
         }
 
-        return view('front.products.show', compact('product'));
+        return view('front.singleproduct.show', compact('product'));
     }
-
 }

@@ -12,7 +12,7 @@
 @section('content')
 
     <div class="mb-2">
-        <a href="{{ route('dashboard.products.index') }}" class="btn btn-success">Back</a>
+        <a href="{{ route('dashboard.singleproduct.index') }}" class="btn btn-success">Back</a>
     </div>
 
     <x-alert type="success" />
@@ -47,8 +47,7 @@
                     <td> {{ $product->name }} </td>
                     <td> {{ $product->status }} </td>
                     <td>
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="" height="60"
-                            width="80" />
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="" height="60" width="80" />
                     </td>
                     <td> {{ $product->deleted_at }} </td>
                     <td>

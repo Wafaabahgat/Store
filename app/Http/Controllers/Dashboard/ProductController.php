@@ -16,7 +16,7 @@ class ProductController extends Controller
     {
         Product::query()->update(['quantity' => 100]);
         $products = Product::with(['category', 'store'])->paginate(20);
-        return view('dashboard.products.index', compact('products'));
+        return view('dashboard.singleproduct.index', compact('products'));
     }
 
     public function create()
@@ -71,7 +71,7 @@ class ProductController extends Controller
         $product->tags()->sync($tag_ids); // tags() => Relations
 
         return redirect()
-            ->route('dashboard.products.index')
+            ->route('dashboard.singleproduct.index')
             ->with('success', 'Product Updated!!');
     }
 

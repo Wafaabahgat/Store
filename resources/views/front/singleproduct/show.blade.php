@@ -11,7 +11,7 @@
                     <div class="col-lg-6 col-md-6 col-12">
                         <ul class="breadcrumb-nav">
                             <li><a href="{{ route('home') }}"><i class="lni lni-home"></i>Home</a></li>
-                            <li><a href="{{ route('products.index') }}">shop</a></li>
+                            <li><a href="{{ route('singleproduct.index') }}">shop</a></li>
                             <li>single Product</li>
                         </ul>
                     </div>
@@ -49,7 +49,7 @@
                                 </h3>
                             @endif
 
-                            <p class="info-text line-clamp-3">{{ $product->disc }}</p>
+                            <p class="info-text line-clamp-3">{{ $product->description }}</p>
 
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-12">
