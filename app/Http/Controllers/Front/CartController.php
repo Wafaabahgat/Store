@@ -53,7 +53,7 @@ class CartController extends Controller
             $request->post('quantity')
         );
         return [
-            'message' => 'Item Updated!'
+            'message' => 'Item Updated !'
         ];
     }
 
@@ -61,7 +61,7 @@ class CartController extends Controller
     {
         $this->cart->delete($id);
         return [
-            'message' => 'Item Deleted!'
+            'message' => 'Item Deleted !'
         ];
     }
 }

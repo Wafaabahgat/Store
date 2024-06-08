@@ -1,4 +1,5 @@
 <x-front-layout title="{{ $product->slug }}">
+
     <x-slot name="breadcrumb">
         <div class="breadcrumbs">
             <div class="container">
@@ -64,9 +65,9 @@
                                         </select>
                                     </div>
                                 </div>
+                                
                                 <div class="col-lg-4 col-md-4 col-12">
                                     <div class="form-group quantity">
-
                                         <label for="color" style="opacity: 0">add</label>
                                         <div class="button cart-button">
                                             <button type="submit" class="btn" style="width: 100%;">Add to
@@ -74,6 +75,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                             </div>
                         </form>
                     </div>

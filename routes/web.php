@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Front\Auth\TwoFactorAuthController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\CheckoutController;
 use App\Http\Controllers\Front\HomeController;
@@ -40,5 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
+Route::get('auth/user/2fa', [TwoFactorAuthController::class, 'index'])->name('front.2fa');
+
+//require __DIR__ . '/auth.php';
 require __DIR__ . '/dashboard.php';

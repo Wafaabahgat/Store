@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(
     [
-        'prefix' => 'dashboard',
+        'prefix' => 'admin/dashboard',
         'as' => "dashboard.",
-        "middleware" => ['auth', 'auth.type:admin,super-admin']
+        "middleware" => ['auth:admin']
+        // "middleware" => ['auth', 'auth.type:admin,super-admin']
     ],
     function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

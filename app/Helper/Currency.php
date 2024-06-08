@@ -9,7 +9,7 @@ class Currency
     // use class as function
     public function __invoke(...$params) //args
     {
-        return static::format(...$params);
+        return static::format(...$params); //arr to arg
     }
     
     public static function format($value)

@@ -33,7 +33,7 @@ class Product extends Model
         return $this->belongsTo(Store::class, 'store_id', 'id')
             ->withDefault();
     }
-    
+
     public function tags()
     {
         return $this->belongsToMany(
@@ -73,5 +73,4 @@ class Product extends Model
 
         return round(($this->compare_price / $this->price * 100) - 100, 1);
     }
-
 }

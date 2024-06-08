@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/tiny-slider.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/glightbox.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+
     @stack('styles')
 
 </head>
@@ -91,22 +92,56 @@
                             <ul class="useful-links">
                                 <li><a href="{{ route('home') }}">{{ __('home page') }}</a></li>
                                 {{-- <li><a href="{{ route('products') }}">{{ __('Products') }}</a></li> --}}
-                                {{-- @if (Auth::guard('admin')->user())
+                                @if (Auth::guard('admin')->user())
                                     <li><a href="{{ route('dashboard.dashboard') }}">{{ __('Dashboard') }}</a></li>
-                                @endif --}}
+                                @endif
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="top-end">
-                            @if (Auth::guard('web')->user())
+
+
+                            @auth
+                                <div class="user-login">
+                                    <div class="user">
+                                        <i class="lni lni-user"></i>
+                                        {{ Auth::guard('web')->user()->name }}
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ route('logout') }}"
+                                                onclick="event.preventDefault(); document.getElementById('logout').submit()">Signout</a>
+                                        </li>
+                                        <li>
+                                            <form class="" method="post" action="{{ route('logout') }}"
+                                                id="logout" style="display:none">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    </ul>
+                                @else
+                                    <div class="user">
+                                        <i class="lni lni-user"></i>
+                                        Hello
+                                    </div>
+                                    <ul class="user-login">
+                                        <li>
+                                            <a href="{{ route('login') }}">{{ __('Sign In') }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @endauth
+                            {{-- @if (Auth::guard('web')->user())
                                 <div class="user-login">
                                     <div class="user">
                                         <i class="lni lni-user"></i>
                                         {{ Auth::guard('web')->user()->name }}
                                     </div>
                                     <li>
-
                                         <form class="" method="post" action="{{ route('logout') }}">
                                             @csrf
                                             <button class="btn btn-outline-light ">{{ __('Logout') }}</button>
@@ -123,14 +158,14 @@
                                         <a href="{{ route('register') }}">{{ __('Register') }}</a>
                                     </li>
                                 </ul>
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- End Topbar -->
-        
+
 
         {{-- ///////////////////////////////////////////// --}}
         <!-- Start Header Middle -->
@@ -145,7 +180,7 @@
                         <!-- End Header Logo -->
                     </div>
                     <div class="col-lg-5 col-md-7 d-xs-none">
-                         <!-- Start Main Menu Search -->
+                        <!-- Start Main Menu Search -->
                         <div class="main-menu-search">
                             <!-- navbar search start -->
                             <div class="navbar-search search-style-5">
@@ -194,12 +229,12 @@
                 </div>
             </div>
         </div>
-    
+
 
         <!-- End Header Middle -->
         {{-- ///////////////////////////////////////////// --}}
 
-        
+
         <!-- Start Header Bottom -->
         <div class="container">
             <div class="row align-items-center">
