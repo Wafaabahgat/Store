@@ -4,20 +4,20 @@
 return [
     [
         'icon' => 'nav-icon fas fa-tachometer-alt',
-        'route' => '/dashboard',
+        'route' => '/admin/dashboard',
         'title' => 'Dashboard',
         'active' => 'dashboard.dashboard',
     ],
     [
         'icon' => 'far fa-circle nav-icon',
-        'route' => '/dashboard/categories',
+        'route' => '/admin/dashboard/categories',
         'title' => 'Category',
         'active' => 'dashboard.categories.*',
         'badge' => 'New'
     ],
     [
         'icon' => 'nav-icon fas fa-th',
-        'route' => '/dashboard/products',
+        'route' => '/admin/dashboard/products',
         'title' => 'Products',
         'active' => 'dashboard.products.*',
     ],

@@ -49,13 +49,13 @@
                             <div class="alt-option">
                                 <span>Or</span>
                             </div>
-                            
+
                             @if ($errors->has(config('fortify.username')))
                                 <div class="alert alert-danger">
                                     {{ $errors->first(config('fortify.username')) }}
                                 </div>
                             @endif
-                            
+
                             <div class="form-group input-group">
                                 <label for="reg-fn">Email</label>
                                 <input class="form-control" type="text" name="{{ config('fortify.username') }}"
@@ -71,18 +71,22 @@
                                         class="form-check-input width-auto" id="exampleCheck1">
                                     <label class="form-check-label">Remember me</label>
                                 </div>
+
                                 @if (Route::has('password.request'))
                                     <a class="lost-pass" href="{{ route('password.request') }}">Forgot password?</a>
                                 @endif
+
                             </div>
                             <div class="button">
                                 <button class="btn" type="submit">Login</button>
                             </div>
+
                             @if (Route::has('register'))
-                                <p class="outer-link">Don't have an account? <a href="{{ route('register') }}">Register
-                                        here </a>
+                                <p class="outer-link">Don't have an account?
+                                    <a href="{{ route('register') }}"> Register here </a>
                                 </p>
                             @endif
+
                         </div>
                     </form>
                 </div>
