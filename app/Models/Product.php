@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+
 
 class Product extends Model
 {
@@ -19,8 +19,18 @@ class Product extends Model
     protected static function booted()
     {
         static::addGlobalScope('store', new StoreScope);
+
+        static::creating(function (Product $product) {
+            $product->slug = Str::slug($product->name);
+        });
     }
 
+    protected $appends = [
+        'image_url',
+    ];
+    protected $hidden = [
+        'image',
+    ];
 
     public function category()
     {
@@ -51,6 +61,7 @@ class Product extends Model
         return $builder->where('status', '=', 'active');
     }
 
+
     // Accessors
     public function getImageUrlAttribute()
     {
@@ -72,5 +83,52 @@ class Product extends Model
         }
 
         return round(($this->compare_price / $this->price * 100) - 100, 1);
+    }
+
+    public function scopeFilter(Builder $builder, $filters)
+    {
+        $options = array_merge([
+            'store_id' => null,
+            'category_id' => null,
+            'tag_id' => null,
+            'name' => null,
+            'status' => 'active',
+        ], $filters);
+
+        // if ($filters['name'] ?? false) {
+        //     $builder->where('name', 'LIKE', "%{$filters['name']}%");
+        // }
+
+        $builder->when($options['name'], function ($builder, $value) {
+            $builder->whereHas('translations', function ($builder) use ($value) {
+                $builder->where('name', 'LIKE', "%{$value}%");
+            });
+            // dd($builder->category);
+            // $builder->translated->where('name', 'LIKE', "%{$value}%");
+        });
+
+        $builder->when($options['status'], function ($builder, $value) {
+            $builder->whereStatus($value);
+        });
+
+        $builder->when($options['store_id'], function ($builder, $value) {
+            $builder->whereStoreId($value);
+        });
+        $builder->when($options['category_id'], function ($builder, $value) {
+            $builder->whereCategoryId($value);
+        });
+
+        $builder->when($options['tag_id'], function ($builder, $value) {
+            $builder->whereExists(function ($query) use ($value) {
+                $query->select(1)
+                    ->from('product_tags')
+                    ->whereRaw('product_id = products.id')
+                    ->whereIn('tag_id', $value);
+            });
+        });
+
+        // $builder->whereHas('tags', function($builder) use ($value){
+        //     $builder->whereIn('id', $value);
+        // });
     }
 }
