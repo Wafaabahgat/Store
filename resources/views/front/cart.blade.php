@@ -11,8 +11,8 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-12">
                         <ul class="breadcrumb-nav">
-                            <li><a href="{{ route('home') }}"><i class="lni lni-home"></i> Home</a></li>
-                            <li><a href="{{ route('singleproduct.index') }}"><i class="lni lni-grid"></i> Products</a>
+                            <li><a href="{{ route('home') }}"><i class="fa-solid fa-house"></i> Home</a></li>
+                            <li><a href="{{ route('singleproduct.index') }}"><i class="fa-thin fa-arrow-right"></i> Products</a>
                             </li>
                             <li>Cart</li>
                         </ul>
@@ -83,7 +83,7 @@
                             </div>
                             <div class="col-lg-1 col-md-2 col-12">
                                 <a class="remove-item item-del" data-id="{{ $item->id }}"
-                                    href="javascript:void(0)"><i class="lni lni-close"></i></a>
+                                    href="javascript:void(0)"><i class="fa-regular fa-x"></i></a>
                             </div>
                         </div>
                     </div>

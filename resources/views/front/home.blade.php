@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-12">
                         <ul class="breadcrumb-nav">
-                            <li><a href="{{ route('home') }}"><i class="lni lni-home"></i> Home</a></li>
+                            <li><a href="{{ route('home') }}"><i class="fa-solid fa-house"></i> Home</a></li>
                         </ul>
                     </div>
                 </div>
@@ -20,85 +20,84 @@
 
 
 
-        <!-- Start Hero Area -->
-        <section class="hero-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-12 custom-padding-right">
-                        <div class="slider-head">
-                            <!-- Start Hero Slider -->
-                            <div class="hero-slider">
-                                <!-- Start Single Slider -->
-                                <div class="single-slider"
-                                    style="background-image: url(assets/images/hero/slider-bg1.jpg);">
-                                    <div class="content">
-                                        <h2><span>No restocking fee ($35 savings)</span>
-                                            M75 Sport Watch
-                                        </h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut
-                                            labore dolore magna aliqua.</p>
-                                        <h3><span>Now Only</span> $320.99</h3>
-                                        <div class="button">
-                                            <a href="product-grids.html" class="btn">Shop Now</a>
-                                        </div>
+    <!-- Start Hero Area -->
+    <section class="hero-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-12 custom-padding-right">
+                    <div class="slider-head">
+                        <!-- Start Hero Slider -->
+                        <div class="hero-slider">
+                            <!-- Start Single Slider -->
+                            <div class="single-slider" style="background-image: url(assets/images/hero/slider-bg1.jpg);">
+                                <div class="content">
+                                    <h2><span>No restocking fee ($35 savings)</span>
+                                        M75 Sport Watch
+                                    </h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut
+                                        labore dolore magna aliqua.</p>
+                                    <h3><span>Now Only</span> $320.99</h3>
+                                    <div class="button">
+                                        <a href="product-grids.html" class="btn">Shop Now</a>
                                     </div>
                                 </div>
-                                <!-- End Single Slider -->
-                                <!-- Start Single Slider -->
-                                <div class="single-slider"
-                                    style="background-image: url(assets/images/hero/slider-bg2.jpg);">
-                                    <div class="content">
-                                        <h2><span>Big Sale Offer</span>
-                                            Get the Best Deal on CCTV Camera
-                                        </h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut
-                                            labore dolore magna aliqua.</p>
-                                        <h3><span>Combo Only:</span> $590.00</h3>
-                                        <div class="button">
-                                            <a href="product-grids.html" class="btn">Shop Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Single Slider -->
                             </div>
-                            <!-- End Hero Slider -->
+                            <!-- End Single Slider -->
+                            <!-- Start Single Slider -->
+                            <div class="single-slider"
+                                style="background-image: url(assets/images/hero/slider-bg2.jpg);">
+                                <div class="content">
+                                    <h2><span>Big Sale Offer</span>
+                                        Get the Best Deal on CCTV Camera
+                                    </h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut
+                                        labore dolore magna aliqua.</p>
+                                    <h3><span>Combo Only:</span> $590.00</h3>
+                                    <div class="button">
+                                        <a href="product-grids.html" class="btn">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Slider -->
                         </div>
+                        <!-- End Hero Slider -->
                     </div>
-                    <div class="col-lg-4 col-12">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-12 md-custom-padding">
-                                <!-- Start Small Banner -->
-                                <div class="hero-small-banner"
-                                    style="background-image: url('assets/images/hero/slider-bnr.jpg');">
-                                    <div class="content">
-                                        <h2>
-                                            <span>New line required</span>
-                                            iPhone 12 Pro Max
-                                        </h2>
-                                        <h3>$259.99</h3>
+                </div>
+                <div class="col-lg-4 col-12">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-6 col-12 md-custom-padding">
+                            <!-- Start Small Banner -->
+                            <div class="hero-small-banner"
+                                style="background-image: url('assets/images/hero/slider-bnr.jpg');">
+                                <div class="content">
+                                    <h2>
+                                        <span>New line required</span>
+                                        iPhone 12 Pro Max
+                                    </h2>
+                                    <h3>$259.99</h3>
+                                </div>
+                            </div>
+                            <!-- End Small Banner -->
+                        </div>
+                        <div class="col-lg-12 col-md-6 col-12">
+                            <!-- Start Small Banner -->
+                            <div class="hero-small-banner style2">
+                                <div class="content">
+                                    <h2>Weekly Sale!</h2>
+                                    <p>Saving up to 50% off all online store items this week.</p>
+                                    <div class="button">
+                                        <a class="btn" href="product-grids.html">Shop Now</a>
                                     </div>
                                 </div>
-                                <!-- End Small Banner -->
                             </div>
-                            <div class="col-lg-12 col-md-6 col-12">
-                                <!-- Start Small Banner -->
-                                <div class="hero-small-banner style2">
-                                    <div class="content">
-                                        <h2>Weekly Sale!</h2>
-                                        <p>Saving up to 50% off all online store items this week.</p>
-                                        <div class="button">
-                                            <a class="btn" href="product-grids.html">Shop Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Start Small Banner -->
-                            </div>
+                            <!-- Start Small Banner -->
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- End Hero Area -->
+        </div>
+    </section>
+    <!-- End Hero Area -->
     {{-- ////////////////////////////////////////////////////////// --}}
 
     <!-- Start Trending Product Area -->
@@ -142,7 +141,7 @@
         </div>
     </section>
     <!-- End Trending Product Area -->
-    
+
 
     <!-- Start Banner Area -->
     <section class="banner section">
@@ -178,45 +177,45 @@
     <!-- End Banner Area -->
 
 
-        <!-- Start Brands Area -->
-        <div class="brands">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 offset-lg-3 col-md-12 col-12">
-                        <h2 class="title">Popular Brands</h2>
-                    </div>
+    <!-- Start Brands Area -->
+    <div class="brands">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3 col-md-12 col-12">
+                    <h2 class="title">Popular Brands</h2>
                 </div>
-                <div class="brands-logo-wrapper">
-                    <div class="brands-logo-carousel d-flex align-items-center justify-content-between">
-                        <div class="brand-logo">
-                            <img src="assets/images/brands/01.png" alt="#">
-                        </div>
-                        <div class="brand-logo">
-                            <img src="assets/images/brands/02.png" alt="#">
-                        </div>
-                        <div class="brand-logo">
-                            <img src="assets/images/brands/03.png" alt="#">
-                        </div>
-                        <div class="brand-logo">
-                            <img src="assets/images/brands/04.png" alt="#">
-                        </div>
-                        <div class="brand-logo">
-                            <img src="assets/images/brands/05.png" alt="#">
-                        </div>
-                        <div class="brand-logo">
-                            <img src="assets/images/brands/06.png" alt="#">
-                        </div>
-                        <div class="brand-logo">
-                            <img src="assets/images/brands/03.png" alt="#">
-                        </div>
-                        <div class="brand-logo">
-                            <img src="assets/images/brands/04.png" alt="#">
-                        </div>
+            </div>
+            <div class="brands-logo-wrapper">
+                <div class="brands-logo-carousel d-flex align-items-center justify-content-between">
+                    <div class="brand-logo">
+                        <img src="assets/images/brands/01.png" alt="#">
+                    </div>
+                    <div class="brand-logo">
+                        <img src="assets/images/brands/02.png" alt="#">
+                    </div>
+                    <div class="brand-logo">
+                        <img src="assets/images/brands/03.png" alt="#">
+                    </div>
+                    <div class="brand-logo">
+                        <img src="assets/images/brands/04.png" alt="#">
+                    </div>
+                    <div class="brand-logo">
+                        <img src="assets/images/brands/05.png" alt="#">
+                    </div>
+                    <div class="brand-logo">
+                        <img src="assets/images/brands/06.png" alt="#">
+                    </div>
+                    <div class="brand-logo">
+                        <img src="assets/images/brands/03.png" alt="#">
+                    </div>
+                    <div class="brand-logo">
+                        <img src="assets/images/brands/04.png" alt="#">
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End Brands Area -->
+    </div>
+    <!-- End Brands Area -->
 
 
     <!-- Start Trending Product Area -->
@@ -247,7 +246,7 @@
                 <!-- Free Shipping -->
                 <li>
                     <div class="media-icon">
-                        <i class="lni lni-delivery"></i>
+                        <i class="fa-solid fa-truck"></i>
                     </div>
                     <div class="media-body">
                         <h5>شحن مجاني</h5>
@@ -257,7 +256,7 @@
                 <!-- Money Return -->
                 <li>
                     <div class="media-icon">
-                        <i class="lni lni-support"></i>
+                        <i class="fa-solid fa-phone"></i>
                     </div>
                     <div class="media-body">
                         <h5>دعم متواصل</h5>
@@ -267,7 +266,7 @@
                 <!-- Support 24/7 -->
                 <li>
                     <div class="media-icon">
-                        <i class="lni lni-credit-cards"></i>
+                        <i class="fa-regular fa-credit-card"></i>
                     </div>
                     <div class="media-body">
                         <h5>الدفع الالكتروني.</h5>
@@ -277,7 +276,7 @@
                 <!-- Safe Payment -->
                 <li>
                     <div class="media-icon">
-                        <i class="lni lni-reload"></i>
+                        <i class="fa-solid fa-rotate-right"></i>
                     </div>
                     <div class="media-body">
                         <h5>الاسترجاع.</h5>
@@ -302,7 +301,8 @@
                 items: 1,
                 nav: false,
                 controls: true,
-                controlsText: ['<i class="lni lni-chevron-left"></i>', '<i class="lni lni-chevron-right"></i>'],
+                controlsText: ['<i class="fa-solid fa-chevron-left"></i>',
+                    '<i class="fa-regular fa-chevron-right"></i>'],
             });
 
             //======== Brand Slider

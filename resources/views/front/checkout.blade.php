@@ -11,8 +11,8 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-12">
                         <ul class="breadcrumb-nav">
-                            <li><a href="{{ route('home') }}"><i class="lni lni-home"></i>Home</a></li>
-                            {{-- <li><a href="{{ route('products') }}"><i class="lni lni-grid"></i>Products</a></li> --}}
+                            <li><a href="{{ route('home') }}"><i class="fa-solid fa-house"></i>>Home</a></li>
+                            {{-- <li><a href="{{ route('products') }}"><i class="fa-solid fa-grid"></i>Products</a></li> --}}
                             <li>Checkout</li>
                         </ul>
                     </div>

@@ -41,6 +41,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\UpdateUserActive::class,
             \App\Http\Middleware\MakeNotificationsAsRead::class,
+            \App\Http\Middleware\SetAppLocal::class,
         ],
 
         'api' => [

@@ -11,7 +11,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-12">
                         <ul class="breadcrumb-nav">
-                            <li><a href="{{ route('home') }}"><i class="lni lni-home"></i>Home</a></li>
+                            <li><a href="{{ route('home') }}"><i class="fa-solid fa-house"></i>Home</a></li>
                             <li><a href="{{ route('singleproduct.index') }}">shop</a></li>
                             <li>single Product</li>
                         </ul>
@@ -39,7 +39,7 @@
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}" id="">
                             <h2 class="title">{{ $product->name }}</h2>
-                            <p class="category"><i class="lni lni-tag"></i>{{ $product->category->name }}</p>
+                            <p class="category"><i class="fa-solid fa-tag"></i>{{ $product->category->name }}</p>
 
                             @if ($product->compare_price)
                                 <h3 class="price">{{ Currency::format($product->price) }}

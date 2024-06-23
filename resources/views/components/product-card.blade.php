@@ -21,7 +21,7 @@
 
                     <div class="button">
                         <button type="submit" class="btn button bg-primary-subtle ">
-                            <i class="lni lni-cart"></i>
+                            <i class="fa-solid fa-cart-shopping"></i>
                             Add to Cart
                         </button>
                     </div>

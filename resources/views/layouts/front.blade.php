@@ -8,6 +8,9 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.svg') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- ========================= CSS here ========================= -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
@@ -52,27 +55,32 @@
 
                                 <li>
                                     <div class="select-position">
-                                        <select id="select4">
-                                            <option value="0" selected>$ USD</option>
-                                            <option value="1">€ EURO</option>
-                                            <option value="2">$ CAD</option>
-                                            <option value="3">₹ INR</option>
-                                            <option value="4">¥ CNY</option>
-                                            <option value="5">৳ BDT</option>
-                                        </select>
+
+                                        <form method="post" action="{{ route('currency.store') }}">
+                                            @csrf
+                                            <select name="currency_code" onchange="this.form.submit()">
+                                                <option value="0" @selected('USD' == session('currency_code'))>$ USD</option>
+                                                <option value="EURO" @selected('EURO' == session('currency_code'))>€ EURO</option>
+                                                <option value="ILS" @selected('ILS' == session('currency_code'))>$ ILS</option>
+                                                <option value="jOD" @selected('jOD' == session('currency_code'))>₹ jOD</option>
+                                                <option value="SAR" @selected('SAR' == session('currency_code'))>¥ SAR</option>
+                                                <option value="QAR" @selected('QAR' == session('currency_code'))>৳ QAR</option>
+                                            </select>
+                                        </form>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="select-position">
-                                        <select id="select5">
-                                            <option value="0" selected>English</option>
-                                            <option value="1">Español</option>
-                                            <option value="2">Filipino</option>
-                                            <option value="3">Français</option>
-                                            <option value="4">العربية</option>
-                                            <option value="5">हिन्दी</option>
-                                            <option value="6">বাংলা</option>
-                                        </select>
+                                        <form method="get" action="{{ URL::current() }}">
+                                            <select name="locale" onchange="this.form.submit()">
+                                                <option value="en" selected>English</option>
+                                                <option value="es">Español</option>
+                                                <option value="fr">Français</option>
+                                                <option value="ar">العربية</option>
+                                                <option value="in">हिन्दी</option>
+                                                <option value="cn">বাংলা</option>
+                                            </select>
+                                        </form>
                                     </div>
                                 </li>
 
@@ -90,7 +98,9 @@
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="top-middle">
                             <ul class="useful-links">
-                                <li><a href="{{ route('home') }}">{{ __('home page') }}</a></li>
+                                <li><a href="{{ route('home') }}">{{ __('Home') }}</a></li>
+                                <li><a href="#">{{ __('About') }}</a></li>
+                                <li><a href="#">{{ __('Contact us') }}</a></li>
                                 {{-- <li><a href="{{ route('products') }}">{{ __('Products') }}</a></li> --}}
                                 @if (Auth::guard('admin')->user())
                                     <li><a href="{{ route('dashboard.dashboard') }}">{{ __('Dashboard') }}</a></li>
@@ -104,13 +114,13 @@
                             @auth('web')
                                 <div class="user-login">
                                     <div class="user">
-                                        <i class="lni lni-user"></i>
+                                       <i class="fa-regular fa-user"></i>
                                         {{ Auth::guard('web')->user()->name }}
                                     </div>
                                     <ul>
                                         <li>
                                             <a href="{{ route('logout') }}"
-                                                onclick="event.preventDefault(); document.getElementById('logout').submit()">Signout</a>
+                                                onclick="event.preventDefault(); document.getElementById('logout').submit()">{{ __('Signout') }}</a>
                                         </li>
                                         <li>
                                             <form class="" method="post" action="{{ route('logout') }}"
@@ -123,13 +133,13 @@
                                 @elseauth('admin')
                                 <div class="user-login">
                                     <div class="user">
-                                        <i class="lni lni-user"></i>
+                                       <i class="fa-regular fa-user"></i>
                                         {{ Auth::guard('admin')->user()->name }}
                                     </div>
                                     <ul>
                                         <li>
                                             <a href="{{ route('logout') }}"
-                                                onclick="event.preventDefault(); document.getElementById('logout').submit()">Signout</a>
+                                                onclick="event.preventDefault(); document.getElementById('logout').submit()">{{ __('Signout') }}</a>
                                         </li>
                                         <li>
                                             <form class="" method="post" action="{{ route('logout') }}"
@@ -141,7 +151,7 @@
                                 </div>
                             @else
                                 <div class="user">
-                                    <i class="lni lni-user"></i>
+                                   <i class="fa-regular fa-user"></i>
                                     Hello
                                 </div>
                                 <ul class="user-login">
@@ -158,7 +168,7 @@
                             {{-- @auth
                                 <div class="user-login">
                                     <div class="user">
-                                        <i class="lni lni-user"></i>
+                                       <i class="fa-regular fa-user"></i>
                                         {{ Auth::guard('web')->user()->name }}
                                     </div>
                                     <ul>
@@ -175,7 +185,7 @@
                                     </ul>
                                 @else
                                     <div class="user">
-                                        <i class="lni lni-user"></i>
+                                       <i class="fa-regular fa-user"></i>
                                         Hello
                                     </div>
                                     <ul class="user-login">
@@ -193,7 +203,7 @@
                             {{-- @if (Auth::guard('web')->user())
                                 <div class="user-login">
                                     <div class="user">
-                                        <i class="lni lni-user"></i>
+                                       <i class="fa-regular fa-user"></i>
                                         {{ Auth::guard('web')->user()->name }}
                                     </div>
                                     <li>
@@ -255,7 +265,7 @@
                                     <input type="text" placeholder="Search">
                                 </div>
                                 <div class="search-btn">
-                                    <button><i class="lni lni-search-alt"></i></button>
+                                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
                                 </div>
                             </div>
                             <!-- navbar search Ends -->
@@ -265,7 +275,7 @@
                     <div class="col-lg-4 col-md-2 col-5">
                         <div class="middle-right-area">
                             <div class="nav-hotline">
-                                <i class="lni lni-phone"></i>
+                                <i class="fa-solid fa-phone"></i>
                                 <h3>{{ __('Hotline') }}:
                                     <span>(+100) 123 456 7890</span>
                                 </h3>
@@ -273,7 +283,7 @@
                             <div class="navbar-cart">
                                 <div class="wishlist">
                                     <a href="javascript:void(0)">
-                                        <i class="lni lni-heart"></i>
+                                        <i class="fa-regular fa-heart"></i>
                                         <span class="total-items">0</span>
                                     </a>
                                 </div>
@@ -297,13 +307,13 @@
                     <div class="nav-inner">
                         <!-- Start Mega Category Menu -->
                         <div class="mega-category-menu">
-                            <span class="cat-button"><i class="lni lni-menu"></i>{{ __('All Categories') }}</span>
+                            <span class="cat-button"><i class="fa-solid fa-bars"></i>{{ __('All Categories') }}</span>
                             {{-- @dd($cats)
                             @if ($cats) --}}
                             <ul class="sub-category">
                                 {{-- @foreach ($cats as $cat)
                                     <li><a href="{{ route('products') }}?category_id={{ $cat->id }}">{{ $cat->name }}
-                                            <i class="lni lni-chevron-right"></i></a>
+                                            <i class="fa-regular fa-chevron-right"></i></a>
                                         @if ($cat->children->count())
                                             <ul class="inner-sub-category">
                                                 @foreach ($cat->children as $child)
@@ -365,14 +375,15 @@
                         <ul>
                             <li>
                                 <a href="https://www.facebook.com/profile.php?id=61556952544486"><i
-                                        class="lni lni-facebook-filled"></i></a>
+                                        class="fa-brands fa-facebook-f"></i></a>
                             </li>
                             <li>
-                                <a href="https://www.tiktok.com/@agamagam9876"><i class="lni lni-tiktok"></i></a>
+                                <a href="https://www.tiktok.com/@agamagam9876"><i
+                                        class="fa-brands fa-twitter"></i></a>
                             </li>
                             <li>
-                                <a href="https://www.instagram.com/ajamajam9876/"><i
-                                        class="lni lni-instagram"></i></a>
+                                <a href="https://www.instagram.com/ajamajam9876/">
+                                    <i class="fa-brands fa-instagram"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -501,11 +512,12 @@
                                     <span>Follow Us On:</span>
                                 </li>
                                 <li><a href="https://www.facebook.com/profile.php?id=61556952544486"><i
-                                            class="lni lni-facebook-filled"></i></a></li>
-                                <li><a href="https://www.tiktok.com/@agamagam9876"><i class="lni lni-tiktok"></i></a>
+                                            class="fa-brands fa-facebook-f"></i></a></li>
+                                <li><a href="https://www.tiktok.com/@agamagam9876"><i
+                                            class="fa-brands fa-twitter"></i></a>
                                 </li>
-                                <li><a href="https://www.instagram.com/ajamajam9876/"><i
-                                            class="lni lni-instagram"></i></a></li>
+                                <li><a href="https://www.instagram.com/ajamajam9876/">
+                                    <i class="fa-brands fa-instagram"></i></a></li>
 
                             </ul>
                         </div>
@@ -519,7 +531,7 @@
 
     <!-- ========================= scroll-top ========================= -->
     <a href="#" class="scroll-top">
-        <i class="lni lni-chevron-up"></i>
+        <i class="fa-solid fa-chevron-up"></i>
     </a>
 
     <!-- ========================= JS here ========================= -->
