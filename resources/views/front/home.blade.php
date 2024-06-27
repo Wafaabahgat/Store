@@ -23,6 +23,7 @@
     <!-- Start Hero Area -->
     <section class="hero-area">
         <div class="container">
+            <x-alert type="info" />
             <div class="row">
                 <div class="col-lg-8 col-12 custom-padding-right">
                     <div class="slider-head">
@@ -302,7 +303,8 @@
                 nav: false,
                 controls: true,
                 controlsText: ['<i class="fa-solid fa-chevron-left"></i>',
-                    '<i class="fa-regular fa-chevron-right"></i>'],
+                    '<i class="fa-regular fa-chevron-right"></i>'
+                ],
             });
 
             //======== Brand Slider
